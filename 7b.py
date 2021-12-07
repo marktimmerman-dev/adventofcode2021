@@ -1,5 +1,3 @@
-import numpy as np
-
 crab = [ int(x) for x in open('input.txt').read().split(',') ]
 
 def abssub(a, b):
@@ -16,7 +14,7 @@ def calculate_cost(i):
 m = max(crab)
 costs = [ calculate_cost(i) for i in range(m+1)]
 
-print(costs[np.argmin(costs)])
+print(min(costs))
 
 
   
