@@ -1,9 +1,6 @@
-import numpy as np
-
 def pipo(x):
   digits, output = x.split('|')
   return [digits.split(), output.split()]
-
 
 data = [ pipo(x) for x in open('input.txt').read().splitlines() ]
 
@@ -14,7 +11,6 @@ def overlap(a, b):
 
 def fully_overlap(a, b):
   return overlap(a,b) == len(b)
-  
 
 def decode(digits, output):
   one = [ d for d in digits if len(d) == 2 ][0]
