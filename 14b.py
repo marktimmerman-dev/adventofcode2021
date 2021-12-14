@@ -4,23 +4,13 @@ p, r = open('input.txt').read().split('\n\n')
 
 polymer = p.splitlines()[0]
 
-rules = dict()
-
-def pipo(s):
-  g = s.split()
-  rules[g[0]] = g[2]
-
-[ pipo(s) for s in r.splitlines() ]
+rules = dict([ s.split(' -> ') for s in r.splitlines() ])
 
 pair_count = dict([ (x, 0) for x in rules.keys() ])
-
 
 pairs = [ "".join(x) for x in list(zip(polymer, polymer[1:])) ]
 for pr in pairs:
   pair_count[pr] += 1
-
-
-print(pair_count)
 
 
 def apply_step():
@@ -35,8 +25,6 @@ def apply_step():
     new_pair_count[new_pair_1] += n
     new_pair_count[new_pair_2] += n
   pair_count = copy.deepcopy(new_pair_count)
-    
-    
 
 for step in range(40):
   apply_step()
@@ -48,5 +36,6 @@ for step in range(40):
       cnt[a] = 0
     cnt[a] += b
   wortel = sorted(list(cnt.values()))
-  print(step+1,wortel[-1] - wortel[0])
+
+print(wortel[-1] - wortel[0])
   

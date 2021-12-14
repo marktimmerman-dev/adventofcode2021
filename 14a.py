@@ -4,14 +4,7 @@ p, r = open('input.txt').read().split('\n\n')
 
 polymer = p.splitlines()[0]
 
-rules = dict()
-
-
-def pipo(s):
-  g = s.split()
-  rules[g[0]] = g[2]
-
-[ pipo(s) for s in r.splitlines() ]
+rules = dict([ s.split(' -> ') for s in r.splitlines() ])
 
 def apply_step(h):
   pairs = [ "".join(x) for x in list(zip(h, h[1:])) ]
