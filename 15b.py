@@ -12,8 +12,7 @@ cave = np.zeros((maxy*5, maxx*5), dtype=np.uint8)
 
 for cy in range(5):
   for cx in range(5):
-    c = smallcave + cy + cx
-    c[c>9] -= 9
+    c = (smallcave + cy + cx - 1) % 9 + 1
     cave[maxy*cy:maxy*(cy+1), maxx*cx:maxx*(cx+1)] = c
 
 maxy, maxx = cave.shape
