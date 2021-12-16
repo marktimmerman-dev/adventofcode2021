@@ -10,7 +10,7 @@ maxy, maxx = cave.shape
 
 print(maxx,maxy,cave.size)
 
-g = nx.Graph()
+g = nx.DiGraph()
 
 g.add_nodes_from(range(cave.size))
 
@@ -23,9 +23,11 @@ for y in range(maxy):
     if x < maxx-1:
       n2 = node(x+1,y)
       g.add_edge(n, n2, weight=cave[x+1,y] )
+      g.add_edge(n2, n, weight=cave[x,y] )
     if y < maxy-1:
       n2 = node(x,y+1)
       g.add_edge(n, n2, weight=cave[x,y+1] )
+      g.add_edge(n2, n, weight=cave[x,y] )
 
 
 print(nx.shortest_path_length(g, source=0, target=cave.size-1, weight='weight'))
